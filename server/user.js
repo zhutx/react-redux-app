@@ -50,6 +50,21 @@ Router.post('/login', function(req, res) {
     })
 })
 
+Router.post('/update', function(req, res) {
+    const userid = req.cookies.userid
+    if (!userid) {
+        return json.dumps({code: 1})
+    }
+    const body = req.body
+    User.findByIdAndUpdate(userid, body, function(err, doc) {
+        const data = Object.assign({}, {
+            user: doc.user,
+            type: doc.type
+        }, body)
+        return res.json({code:0, data})
+    })
+})
+
 function md5Pwd(pwd) {
     const salt = "imooc_is_good_545h4535j5;43"
     return utils.md5(utils.md5(pwd+salt))
