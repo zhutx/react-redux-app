@@ -10,7 +10,10 @@ class AvatarSelector extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            text: '',
+            icon: ''
+        }
     }
 
     render () {
