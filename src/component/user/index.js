@@ -22,7 +22,6 @@ class User extends React.Component {
         alert('注销', '确定退出吗？', [
             { text: '取消', onPress: () => console.log('cancel') },
             { text: '确认', onPress: () => {
-                console.log('sure')
                 browserCookie.erase('userid')
                 this.props.logoutSubmit()
             }}
