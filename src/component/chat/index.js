@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem } from 'antd-mobile'
+import { List, InputItem, NavBar} from 'antd-mobile'
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
 import { getMsgList, sendMsg, recvMsg } from '../../redux/chat.redux'
@@ -18,8 +18,6 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getMsgList()
-        this.props.recvMsg()
         // socket.on('recvmsg', (data) => {
         //     this.setState({msg: [...this.state.msg, data.text]})
         // })
@@ -36,10 +34,27 @@ class Chat extends React.Component {
 
     render () {
         console.log(this.props)
+        const user = this.props.match.params.user
+        const Item = List.Item
         return (
-            <div>
+            <div id='chat-page'>
+                <NavBar mode='dark'>
+                    {this.props.match.params.user}
+                </NavBar>
                 {this.props.chat.chatmsg.map(v=>{
-                    return <p key={v._id}>{v.content}</p>
+                    return v.from == user ? (
+                        <List key={v._id}>
+                            <Item
+                            >{v.content}</Item>
+                        </List>
+                    ) : (
+                        <List key={v._id}>
+                            <Item
+                                extra={'avatar'}
+                                className='chat-me'
+                                >{v.content}</Item>
+                        </List>
+                    )
                 })}
                 <div className='stick-footer'>
                     <List>
