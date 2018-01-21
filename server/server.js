@@ -5,6 +5,7 @@ const model = require('./model')
 const User = model.getModel('user')
 
 import React from 'react'
+import { renderToString } from 'react-dom/server'
 
 const Chat = model.getModel('chat')
 const path = require('path')
@@ -14,11 +15,6 @@ const app = new express()
 const server = require('http').Server(app)
 
 const io = require('socket.io')(server)
-
-function App() {
-    return <h2>server render</h2>
-}
-console.log(App())
 
 io.on('connection', function(socket) {
     console.log('socket.io connection')
@@ -43,12 +39,28 @@ app.use('/user', userRouter)
 // 2. DNS解析到你服务器的IP
 // 3. 安装Nginx
 // 4. 使用 pm2 管理node进程
+
+function App() {
+    return (
+        <div>
+            <p>server render</p>
+            <p>imooc rocks!</p>
+        </div>
+    )
+}
+
 app.use(function(req, res, next) {
+    // 请求的是/user开头的后端接口,或者/static，则继续
     if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next()
     }
-    return res.sendFile(path.resolve('build/index.html'))
+
+    const htmlRes = renderToString(<App></App>)
+    res.send(htmlRes)
+    // 否则统一访问index.html首页
+    // return res.sendFile(path.resolve('build/index.html'))
 })
+// 访问/对应build目录
 app.use('/', express.static(path.resolve('build')))
 
 server.listen(9093, function() {
