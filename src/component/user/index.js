@@ -49,7 +49,7 @@ class User extends React.Component {
                 </List>
                 <WhiteSpace/>
                 <List>
-                    <Item style={{zIndex:1}} onClick={this.logout}>退出登录</Item>
+                    <Item onClick={this.logout}>退出登录</Item>
                 </List>
             </div>
         ) : <Redirect to={this.props.redirectTo}/>
