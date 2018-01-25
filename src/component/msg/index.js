@@ -16,7 +16,7 @@ class Msg extends React.Component {
         const Brief = Item.Brief
         const userid = this.props.user._id
         const userinfo = this.props.chat.users
-        console.log(this.props)
+        // console.log(this.props)
         const msgGroup = {}
         this.props.chat.chatmsg.forEach(v=>{
             msgGroup[v.chatid] = msgGroup[v.chatid] || []
@@ -25,7 +25,7 @@ class Msg extends React.Component {
         const chatList = Object.values(msgGroup).sort((a, b)=>{
             const a_last = this.getLast(a).create_time
             const b_last = this.getLast(b).create_time
-            console.log(b_last + '-' + a_last)
+            // console.log(b_last + '-' + a_last)
             return b_last - a_last
         })
         
@@ -34,7 +34,7 @@ class Msg extends React.Component {
         return (
             <div>
                 {chatList.map(v=>{
-                    console.log(v)
+                    // console.log(v)
                     const lastItem = this.getLast(v)
                     const targetId = v[0].from == userid ? v[0].to : v[0].from
                     const unreadNum = v.filter(v=>!v.read && v.to == userid).length
