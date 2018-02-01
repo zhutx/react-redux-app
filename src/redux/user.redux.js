@@ -1,5 +1,5 @@
 /**
- * 如果你还没有React技术栈基础，尤其是React和Redux的相关基础。建议先从这了解下：https://segmentfault.com/a/1190000009879742，
+ * React技术栈，尤其是React和Redux的相关知识。建议先从这了解下：https://segmentfault.com/a/1190000009879742，
  */
 
 /**
