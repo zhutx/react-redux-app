@@ -1,3 +1,6 @@
+/**
+ * Logo组件
+ */
 import React from 'react'
 import logoImg from './job.png'
 import './logo.less'

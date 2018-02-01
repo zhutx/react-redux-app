@@ -1,4 +1,8 @@
 /**
+ * 如果你还没有React技术栈基础，尤其是React和Redux的相关基础。建议先从这了解下：https://segmentfault.com/a/1190000009879742，
+ */
+
+/**
  * redux模块组成要素
  * 
  * 1. 设定本模块初始状态
@@ -9,12 +13,13 @@
 import axios from 'axios'
 import { getRedirectPath } from '../util'
 
+// action type
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
 const LOGOUT = 'LOGOUT'
 
-// 初始状态
+// init state
 const initState = {
     redirectTo: '',
     msg: '',
@@ -22,7 +27,7 @@ const initState = {
     type: ''
 }
 
-// reducer函数
+// reducer，导出供reducer.js合并状态
 export function user(state = initState, action) {
     switch(action.type) {
         case AUTH_SUCCESS:
@@ -48,6 +53,7 @@ function errorMsg(msg) {
     return { msg, type: ERROR_MSG }
 }
 
+// 导出外部调用函数
 export function loadData(userinfo) {
     return { type: LOAD_DATA, payload: userinfo}
 }

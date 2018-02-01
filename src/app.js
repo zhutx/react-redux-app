@@ -1,4 +1,8 @@
 /**
+ * 如果你还没有React技术栈基础，尤其是React和Redux的相关基础。建议先从这了解下：https://segmentfault.com/a/1190000009879742，
+ */
+
+/**
  * 业务入口组件
  * 
  * 主要任务：
@@ -47,12 +51,12 @@ class App extends React.Component {
                     Switch可以按for循环的break去理解，一旦匹配上，就不继续匹配下去了
                 */}
                 <Switch>
+                    <Route path="/register" component={Register}></Route>
+                    <Route path="/login" component={Login}></Route>
                     <Route path="/bossinfo" component={BossInfo}></Route>
                     <Route path="/geniusinfo" component={GeniusInfo}></Route>
-                    <Route path="/login" component={Login}></Route>
-                    <Route path="/register" component={Register}></Route>
                     <Route path="/chat/:user" component={Chat}></Route>
-                    {/* 牛人/BOSS列表、消息列表、个人中心板块，因为需要都有NavBar头和TabBar尾的框架，可以定义一个Dashboard组件来负责 */}
+                    {/* 牛人/BOSS列表、消息列表、个人中心板块，因为需要都有NavBar头和TabBar尾的框架，可以定义一个Dashboard组件来负责定义路由规则 */}
                     <Route component={Dashboard}></Route>
                 </Switch>
             </div>

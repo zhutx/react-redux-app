@@ -1,3 +1,6 @@
+/**
+ * 聊天组件
+ */
 import React from 'react'
 import { List, InputItem, NavBar, Icon, Grid} from 'antd-mobile'
 import { connect } from 'react-redux'
@@ -5,9 +8,11 @@ import { getMsgList, sendMsg, recvMsg, readMsg } from '../../redux/chat.redux'
 import { getChatId } from '../../util'
 import QueueAnim from 'rc-queue-anim'
 
+// connect方法接受两个参数：mapStateToProps和mapDispatchToProps。它们定义了 UI 组件的业务逻辑。
+// 前者负责输入逻辑，即将state映射到 UI 组件的参数（props），后者负责输出逻辑，即将用户操作映射成 Action
 @connect(
-    state => state,
-    { getMsgList, sendMsg, recvMsg, readMsg }
+    state => state, // mapStateToProps, 从状态树上引入组件所需的状态片段,绑定到组件的props属性
+    { getMsgList, sendMsg, recvMsg, readMsg } // mapDispatchToProps, 引入redux模块的函数，绑定到组件的props属性
 )
 class Chat extends React.Component {
 

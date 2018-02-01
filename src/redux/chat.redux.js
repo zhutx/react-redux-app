@@ -1,4 +1,8 @@
 /**
+ * 如果你还没有React技术栈基础，尤其是React和Redux的相关基础。建议先从这了解下：https://segmentfault.com/a/1190000009879742，
+ */
+
+/**
  * redux模块组成要素
  * 
  * 1. 设定本模块初始状态
@@ -25,7 +29,7 @@ const initState = {
     unread: 0
 }
 
-// reducer
+// reducer，导出供reducer.js合并状态
 export function chat(state = initState, action) {
     switch (action.type) {
         case MSG_LIST:
@@ -54,6 +58,7 @@ function msgRead(from, userid, num) {
     return { type: MSG_READ, payload: { from, userid, num } }
 }
 
+// 导出外部调用函数
 /* 
 export function readMsg(from) {
     return (dispatch, getState) => {

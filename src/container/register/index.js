@@ -1,3 +1,6 @@
+/**
+ * 注册组件
+ */
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import { List, InputItem, Radio, WingBlank, WhiteSpace, Button } from 'antd-mobile'
