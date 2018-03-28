@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd-mobile": "^2.1.2",
+    "antd-mobile": "^2.1.8",
     "autoprefixer": "7.1.6",
     "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
